@@ -1,10 +1,21 @@
 import Categories from "./components/categories";
 import Link from "next/link";
+import ProductList from "@/components/ui/product-list";
 import PromoBanner from "./components/promo-banner";
+import { prismaClient } from "@/lib/prisma";
 import { useSession } from "next-auth/react";
 
-export default function Home() {
+export default async function Home() {
   /*  const { data } = useSession(); */
+
+  const deals = await prismaClient.product.findMany({
+    where: {
+      discountPercentage: {
+        gt: 0,
+      },
+    },
+  });
+
   return (
     <>
       {/* <div className="mx-auto max-w-[1920px]">
@@ -29,12 +40,12 @@ export default function Home() {
           <Categories />
         </div>
 
-        {/* <div className="flex flex-col gap-3 lg:gap-5">
-          <SectionTitle className="pl-5">Ofertas</SectionTitle>
+        <div className="flex flex-col gap-3 lg:gap-5">
+          {/* <SectionTitle className="pl-5">Ofertas</SectionTitle> */}
           <ProductList products={deals} />
         </div>
 
-        <div className="flex flex-col lg:flex-row">
+        {/*  <div className="flex flex-col lg:flex-row">
           <Link href="/category/mouses" className="flex flex-1">
             <PromoBanner
               src="/banner-home-02.png"
