@@ -66,9 +66,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalDiscount = subtotal - total;
 
   const addProductToCart = (product: CartProduct) => {
-    console.log("🍄 >>>>>>> addProductToCart >>>>>>> product:", product);
-
-    // se o produto já estiver no carrinho, apenas aumente a sua quantidade
+    // verificar se o produto já esta no carrinho, se sim, aumentar a quantidade
     const productIsAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
     );
@@ -89,8 +87,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
       return;
     }
-
-    // se não, adicione o produto à lista
     setProducts((prev) => [...prev, product]);
   };
 
