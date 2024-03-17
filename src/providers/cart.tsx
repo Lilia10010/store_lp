@@ -41,12 +41,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
+      JSON.parse(localStorage.getItem("@store_lp/cart-products") || "[]"),
     );
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    localStorage.setItem("@store_lp/cart-products", JSON.stringify(products));
   }, [products]);
 
   // Total sem descontos
@@ -66,7 +66,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalDiscount = subtotal - total;
 
   const addProductToCart = (product: CartProduct) => {
-    // se o produto já estiver no carrinho, apenas aumente a sua quantidade
+    // verificar se o produto já esta no carrinho, se sim, aumentar a quantidade
     const productIsAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
     );
@@ -87,8 +87,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
       return;
     }
-
-    // se não, adicione o produto à lista
     setProducts((prev) => [...prev, product]);
   };
 
