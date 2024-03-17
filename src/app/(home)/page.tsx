@@ -2,6 +2,7 @@ import Categories from "./components/categories";
 import Link from "next/link";
 import ProductList from "@/components/ui/product-list";
 import PromoBanner from "./components/promo-banner";
+import SectionTitle from "@/components/ui/section-title";
 import { prismaClient } from "@/lib/prisma";
 import { useSession } from "next-auth/react";
 
@@ -16,17 +17,34 @@ export default async function Home() {
     },
   });
 
+  const keyboards = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "keyboards",
+      },
+    },
+  });
+
+  const mouses = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "mouses",
+      },
+    },
+  });
+
   return (
     <>
-      {/* <div className="mx-auto max-w-[1920px]">
+      <div className="mx-auto max-w-[1920px]">
         <Link href="/deals">
           <PromoBanner
-            src="/deals-banner.png"
+            /*   src="/deals-banner.png" */
+            src="/banner-home-01.png"
             className="hidden h-auto w-full lg:block"
             alt="Até 55% de desconto esse mês!"
           />
         </Link>
-      </div> */}
+      </div>
       <div className="mx-auto flex flex-col gap-8 py-8 lg:container lg:gap-10">
         <Link href="/deals">
           <PromoBanner
@@ -41,11 +59,11 @@ export default async function Home() {
         </div>
 
         <div className="flex flex-col gap-3 lg:gap-5">
-          {/* <SectionTitle className="pl-5">Ofertas</SectionTitle> */}
+          <SectionTitle className="pl-5">Ofertas</SectionTitle>
           <ProductList products={deals} />
         </div>
 
-        {/*  <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row">
           <Link href="/category/mouses" className="flex flex-1">
             <PromoBanner
               src="/banner-home-02.png"
@@ -84,12 +102,12 @@ export default async function Home() {
               className="hidden px-5 lg:block"
             />
           </Link>
-        </div> */}
+        </div>
 
-        {/*  <div className="flex flex-col gap-3 lg:gap-5">
+        <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle className="pl-5">Mouses</SectionTitle>
           <ProductList products={mouses} />
-        </div> */}
+        </div>
       </div>
     </>
   );
