@@ -41,12 +41,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
+      JSON.parse(localStorage.getItem("@store_lp/cart-products") || "[]"),
     );
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+    localStorage.setItem("@store_lp/cart-products", JSON.stringify(products));
   }, [products]);
 
   // Total sem descontos
@@ -66,6 +66,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalDiscount = subtotal - total;
 
   const addProductToCart = (product: CartProduct) => {
+    console.log("🍄 >>>>>>> addProductToCart >>>>>>> product:", product);
+
     // se o produto já estiver no carrinho, apenas aumente a sua quantidade
     const productIsAlreadyOnCart = products.some(
       (cartProduct) => cartProduct.id === product.id,
