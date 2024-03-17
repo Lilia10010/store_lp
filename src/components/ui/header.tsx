@@ -139,13 +139,11 @@ const Header = () => {
           </div>
         </SheetContent>
       </Sheet>
-
       <Link href="/">
         <h1 className="text-lg font-semibold">
-          <span className="text-primary">FSW</span> Store
+          <span className="text-primary">LP</span> Store
         </h1>
       </Link>
-
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline" className="relative">
