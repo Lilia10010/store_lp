@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { AuthProvider } from "@/providers/auth";
+import CartProvider from "@/providers/cart";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import { Inter } from "next/font/google";
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body>
         <div className="flex h-full flex-col">
           <AuthProvider>
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
+            <CartProvider>
+              <Header />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
           </AuthProvider>
         </div>
       </body>
