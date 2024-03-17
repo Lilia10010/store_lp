@@ -16,9 +16,10 @@ export const createCheckout = async (
     mode: "payment",
     success_url: process.env.HOST_URL,
     cancel_url: process.env.HOST_URL,
-    /*  metadata: {
-      orderId,
-    }, */
+    metadata: {
+      products: JSON.stringify(products),
+      /*   orderId, */
+    },
     line_items: products.map((product) => {
       return {
         price_data: {

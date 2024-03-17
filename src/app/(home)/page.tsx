@@ -97,7 +97,7 @@ export default async function Home() {
 
           <Link href="/catalog">
             <PromoBanner
-              src="/free-shipping-banner.png"
+              src="/banner-home-03.png"
               alt="Até 55% de desconto em mouses!"
               className="hidden px-5 lg:block"
             />
