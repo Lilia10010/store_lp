@@ -4,7 +4,7 @@ import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-/* import { CartContext } from "@/providers/cart"; */
+import { CartContext } from "@/providers/cart";
 import DiscountBadge from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 
@@ -15,7 +15,7 @@ interface ProductInfoProps {
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
 
-  /*   const { addProductToCart } = useContext(CartContext); */
+  const { addProductToCart } = useContext(CartContext);
 
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -25,9 +25,9 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
     setQuantity((prev) => prev + 1);
   };
 
-  /*   const handleAddToCartClick = () => {
+  const handleAddToCartClick = () => {
     addProductToCart({ ...product, quantity });
-  }; */
+  };
 
   return (
     <div className="flex flex-col px-5 lg:w-[40%] lg:rounded-lg lg:bg-accent lg:p-10">
@@ -77,7 +77,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       <Button
         className="mt-8 font-bold uppercase"
-        /* onClick={handleAddToCartClick} */
+        onClick={handleAddToCartClick}
       >
         Adicionar ao carrinho
       </Button>
