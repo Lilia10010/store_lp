@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { AuthProvider } from "@/providers/auth";
+import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           <div className="flex-1">{children}</div>
+          <Footer />
         </AuthProvider>
       </body>
     </html>
