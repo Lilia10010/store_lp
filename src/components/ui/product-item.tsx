@@ -17,14 +17,13 @@ const ProductItem = ({ product, className }: ProductItemProps) => {
     >
       <div className="relative flex aspect-square w-full items-center justify-center rounded-lg bg-accent">
         <Image
-          src="/product-default.png"
+          src="/product_01.jpeg"
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+          className="h-auto max-h-[70%] w-auto max-w-[80%] rounded-md object-contain"
           alt={product.name}
         />
-
         {product.discountPercentage > 0 && (
           <DiscountBadge className="absolute left-3 top-3">
             {product.discountPercentage}

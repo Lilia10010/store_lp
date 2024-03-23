@@ -18,7 +18,7 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
       <div className="flex h-[77px] w-[100px] items-center justify-center rounded-lg bg-accent lg:h-[130px] lg:w-[150px]">
         <Image
           /* src={orderProduct.product.imageUrls[0]} */
-          src="/product-default.png"
+          src="/product_01.jpeg"
           width={0}
           height={0}
           sizes="100vw"

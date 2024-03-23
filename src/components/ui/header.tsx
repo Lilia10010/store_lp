@@ -2,6 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import {
+  HandMetal,
   HomeIcon,
   ListOrderedIcon,
   LogInIcon,
@@ -59,7 +60,7 @@ const Header = () => {
     <Card className="flex items-center justify-between p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline">
+          <Button size="icon" variant="outline" title="Menu">
             <MenuIcon />
           </Button>
         </SheetTrigger>
@@ -157,14 +158,17 @@ const Header = () => {
           </div>
         </SheetContent>
       </Sheet>
-      <Link href="/">
-        <h1 className="text-lg font-semibold">
-          <span className="text-primary">LP</span> Store
-        </h1>
+      <Link href="/" title="Home">
+        <HandMetal className="text-primary" />
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline" className="relative">
+          <Button
+            size="icon"
+            variant="outline"
+            className="relative"
+            title="Carrinho"
+          >
             {cartQuantityItems > 0 && (
               <span className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)] flex h-6 w-6 items-center justify-center rounded-lg bg-primary text-sm font-bold">
                 {cartQuantityItems}

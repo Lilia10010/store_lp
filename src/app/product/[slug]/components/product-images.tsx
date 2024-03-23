@@ -5,10 +5,16 @@ import { useState } from "react";
 
 interface ProductImagesProps {
   name: string;
-  imageUrls: string[];
+  imageUrls?: string[];
 }
 
-const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
+const ProductImages = ({ name }: ProductImagesProps) => {
+  const imageUrls = [
+    "/product_00.jpeg",
+    "/product_01.jpeg",
+    "/product_02.jpeg",
+    "/product_03.jpeg",
+  ];
   const [currentImage, setCurrentImage] = useState(imageUrls[0]);
 
   const handleImageClick = (imageUrl: string) => {
@@ -19,13 +25,12 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
     <div className="flex flex-col lg:min-h-full lg:w-3/5">
       <div className="flex h-[380px] w-full items-center justify-center bg-accent lg:h-full lg:rounded-lg">
         <Image
-          /* src={currentImage} */
-          src="/product-default.png"
+          src={currentImage}
           alt={name}
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+          className="h-auto max-h-[70%] w-auto max-w-[80%] rounded-md object-contain"
         />
       </div>
 
@@ -42,13 +47,12 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
             onClick={() => handleImageClick(imageUrl)}
           >
             <Image
-              /*    src={imageUrl} */
-              src="/product-default.png"
+              src={imageUrl}
               alt={name}
               height={0}
               width={0}
               sizes="100vw"
-              className="h-auto max-h-[70%] w-auto max-w-[80%]"
+              className="h-auto max-h-[70%] w-auto max-w-[80%] rounded-md"
             />
           </button>
         ))}
