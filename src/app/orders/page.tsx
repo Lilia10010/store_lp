@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 async function OrderPage() {
   const session = await getServerSession(authOptions);
 
-  if (!session || !session.user) {
+  if (!session || !session.user || !session.user) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-2 p-5">
         <h2 className="font-bold">Acesso Negado!</h2>
@@ -19,7 +19,7 @@ async function OrderPage() {
     );
   }
 
-  /*  const orders = await prismaClient.order.findMany({
+  const orders = await prismaClient.order.findMany({
     where: {
       userId: session.user.id,
     },
@@ -30,7 +30,7 @@ async function OrderPage() {
         },
       },
     },
-  }); */
+  });
 
   return (
     <div className="p-5 lg:container lg:mx-auto lg:py-10">
@@ -40,9 +40,9 @@ async function OrderPage() {
       </Badge>
 
       <div className="mt-5 flex flex-col gap-5">
-        {/*   {orders.map((order) => (
+        {orders.map((order) => (
           <OrderItem key={order.id} order={order} />
-        ))} */}
+        ))}
       </div>
     </div>
   );

@@ -17,7 +17,8 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
     <div className="relative flex w-full items-center gap-4">
       <div className="flex h-[77px] w-[100px] items-center justify-center rounded-lg bg-accent lg:h-[130px] lg:w-[150px]">
         <Image
-          src={orderProduct.product.imageUrls[0]}
+          /* src={orderProduct.product.imageUrls[0]} */
+          src="/product-default.png"
           width={0}
           height={0}
           sizes="100vw"

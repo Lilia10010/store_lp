@@ -17,7 +17,6 @@ export const createCheckout = async (
     success_url: process.env.HOST_URL,
     cancel_url: process.env.HOST_URL,
     metadata: {
-      products: JSON.stringify(products),
       orderId,
     },
     line_items: products.map((product) => {
@@ -35,5 +34,13 @@ export const createCheckout = async (
       };
     }),
   });
+  //criar uma função para retornar erro
+
+  if (!checkout) {
+    console.log("🍄 >>>>>>> checkout:", checkout);
+
+    /* throw new Error("Erro ao criar checkout"); */
+  }
+
   return checkout;
 };
