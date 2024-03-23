@@ -7,8 +7,7 @@ import { Separator } from "./separator";
 import { ShoppingCartIcon } from "lucide-react";
 import { computeProductTotalPrice } from "@/helpers/product";
 import { createCheckout } from "@/actions/checkout";
-/* import { createCheckout } from "@/actions/checkout";
-import { createOrder } from "@/actions/order";*/
+import { createOrder } from "@/actions/order";
 import { loadStripe } from "@stripe/stripe-js";
 import { useContext } from "react";
 import { useSession } from "next-auth/react";
@@ -19,24 +18,16 @@ const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
-    /*  if (!data?.user) {
-      // TODO: redirecionar para o login
+    if (!data?.user) {
+      console.log("🍄 redirecionar ou abrir modal -> para o login");
       return;
-    } */
+    }
 
-    const checkout = await createCheckout(products);
-    console.log(
-      "🍄 >>>>>>> handleFinishPurchaseClick >>>>>>> checkout:",
-      checkout,
-    );
-
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-    /*    const order = await createOrder(products, (data?.user as any).id);
+    const order = await createOrder(products, (data?.user as any).id);
 
     const checkout = await createCheckout(products, order.id);
 
- */
-    // Criar pedido no banco
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
